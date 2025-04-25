@@ -4,7 +4,7 @@ defmodule ExUnitBrittle.MixProject do
   def project do
     [
       app: :ex_unit_brittle,
-      version: "0.1.0",
+      version: "0.1.1",
       elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
@@ -28,7 +28,7 @@ defmodule ExUnitBrittle.MixProject do
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
-    []
+    [{:ex_doc, ">= 0.0.0", only: :dev, runtime: false}]
   end
 
   defp description() do
@@ -37,10 +37,8 @@ defmodule ExUnitBrittle.MixProject do
 
   defp package() do
     [
-      # This option is only needed when you don't want to use the OTP application name
       name: "ex_unit_brittle",
-      # These are the default files included in the package
-      files: ~w(lib priv mix.exs README* readme* LICENSE* license* CHANGELOG* changelog* src),
+      files: ~w(lib mix.exs README* LICENSE*),
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/bit4bit/ex_unit_brittle"}
     ]

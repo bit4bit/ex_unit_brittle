@@ -15,7 +15,7 @@ defmodule ExUnitBrittle do
     use ExUnit.Case
     use ExUnitBrittle
 
-    @tag brittle_attemps: 10
+    @tag brittle_attempts: 10
     @tag brittle_timeout: 100
     test_brittle "brittle test" do
     ....
@@ -47,15 +47,15 @@ defmodule ExUnitBrittle do
       name = ExUnit.Case.register_test(mod, file, line, :test, message, [])
 
       def unquote(name)(
-            %{brittle_attemps: brittle_attemps, brittle_timeout: brittle_timeout} =
+            %{brittle_attempts: brittle_attempts, brittle_timeout: brittle_timeout} =
               context = unquote(context)
           ) do
         unquote(code)
       rescue
         ex ->
-          if brittle_attemps > 1 do
+          if brittle_attempts > 1 do
             Process.sleep(brittle_timeout)
-            unquote(name)(context |> Map.put(:brittle_attemps, brittle_attemps - 1))
+            unquote(name)(context |> Map.put(:brittle_attempts, brittle_attempts - 1))
           else
             raise ex
           end

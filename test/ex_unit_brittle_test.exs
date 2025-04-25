@@ -3,7 +3,7 @@ defmodule ExUnitBrittleTest do
   use ExUnitBrittle
 
   @moduletag fixtures: [false, false, true]
-  @moduletag brittle_attemps: 10
+  @moduletag brittle_attempts: 10
   @moduletag brittle_timeout: 100
 
   test_brittle "pass", %{fixtures: fixtures} do
